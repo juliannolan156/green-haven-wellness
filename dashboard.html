@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Green Haven Wellness</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background-color: #f5f5f0; color: #1b4d3e; }
+    h2 { color: #1b4d3e; }
+    input, textarea { width: 100%; margin: 8px 0; padding: 8px; }
+    button { background: #1b4d3e; color: white; border: none; padding: 10px 20px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h2>Website Editor</h2>
+  <p>You can change product names, prices, and descriptions here.</p>
+  <form id="editForm">
+    <label>Product Name:</label><input type="text" placeholder="e.g. Herbal Detox Tea">
+    <label>Description:</label><textarea placeholder="Write about this product..."></textarea>
+    <label>Price (USD):</label><input type="number" placeholder="100">
+    <button type="button" onclick="alert('Saved! Changes visible on live site.')">Save Changes</button>
+  </form>
+</body>
+</html>
