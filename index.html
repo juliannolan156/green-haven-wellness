@@ -1,167 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Green Haven Wellness</title>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Lato&display=swap" rel="stylesheet">
+  <title>Green Haven Wellness - Herbal Medicine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Fonts & colors */
-    body { font-family: 'Lato', sans-serif; background: #FCF9F3; color: #333; margin:0; }
-    h1, h2, h3 { font-family: 'Merriweather', serif; color: #1B5E20; }
-    a { text-decoration: none; color: inherit; }
-    button { cursor:pointer; transition:0.3s; }
-
-    /* Header */
-    header { display:flex; justify-content: space-between; align-items:center; padding:20px 40px; background:#2E7D32; color:white; }
-    header h1 { font-size:2rem; }
-    header a { color:white; font-size:0.95rem; }
-
-    /* Navigation */
-    nav { display:flex; justify-content:center; background:#A5D6A7; padding:12px 0; }
-    nav a { margin:0 20px; font-weight:bold; color:#1B5E20; }
-    nav a:hover { color:#2E7D32; }
-
-    /* Hero Section */
-    .hero { background: url('https://images.unsplash.com/photo-1584270354949-5e53d2d03b7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGVyYmFsfGVufDB8fDB8fA%3D%3D&w=1080&q=80') center/cover no-repeat; height:450px; display:flex; align-items:center; justify-content:center; color:white; text-align:center; text-shadow:2px 2px 6px rgba(0,0,0,0.6);}
-    .hero h2 { font-size:2.2rem; max-width:700px; line-height:1.3; }
-
-    /* Sections */
-    section { max-width:1200px; margin:auto; padding:60px 20px; }
-    h2 { text-align:center; margin-bottom:40px; font-size:2rem; }
-
-    /* Products */
-    .products { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:30px; justify-items:center; }
-    .product { background:white; border-radius:10px; box-shadow:0 3px 15px rgba(0,0,0,0.08); padding:15px; text-align:center; transition:0.3s; }
-    .product:hover { transform:translateY(-5px); box-shadow:0 5px 20px rgba(0,0,0,0.15); }
-    .product img { width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:12px; }
-    .product h3 { margin-bottom:5px; }
-    .product p { font-weight:bold; color:#2E7D32; font-size:1.1rem; }
-
-    /* About */
-    #about { display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
-    #about img { width:400px; border-radius:10px; object-fit:cover; }
-    #about p { flex:1; font-size:1.1rem; line-height:1.7; }
-
-    /* Testimonials */
-    .testimonials { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-    .testimonial { background:#E8F5E9; border-left:5px solid #1B5E20; padding:20px; border-radius:8px; }
-
-    /* Order Form */
-    form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:12px; }
-    input, textarea, select, button { padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
-    button { background:#1B5E20; color:white; border:none; font-weight:bold; }
-    button:hover { background:#145A32; }
-
-    /* Footer */
-    footer { background:#2E7D32; color:white; text-align:center; padding:25px 20px; }
-    footer p { margin-bottom:5px; }
-    footer a { color:white; margin:0 8px; font-size:0.9rem; }
+    body { box-sizing: border-box; }
+    .gradient-bg { background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%); }
+    .gold-accent { color: #d4af37; }
+    .cream-bg { background-color: #fefdf8; }
+    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link:hover { color: #d4af37; }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #d4af37; transition: width 0.3s ease; }
+    .nav-link:hover::after { width: 100%; }
+    .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+    .btn-primary { background: linear-gradient(135deg, #047857, #059669); color: white; padding: 12px 24px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+    .btn-primary:hover { background: linear-gradient(135deg, #065f46, #047857); transform: translateY(-2px); }
+    .btn-gold { background: linear-gradient(135deg, #d4af37, #b8941f); color: white; padding: 12px 24px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+    .btn-gold:hover { background: linear-gradient(135deg, #b8941f, #9a7c1a); transform: translateY(-2px); }
+    .testimonial-card { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid #d4af37; }
+    .form-input { width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease; }
+    .form-input:focus { outline: none; border-color: #047857; }
   </style>
 </head>
-<body>
+<body class="cream-bg">
 
-  <header>
-    <h1>Green Haven Wellness</h1>
-    <a href="mailto:greenhavenwellness1@gmail.com">greenhavenwellness1@gmail.com</a>
-  </header>
-
-  <nav>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#order">Order</a>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <h2>Professional Herbal Medicine Solutions for Your Health and Wellness</h2>
+<!-- Navigation -->
+<nav class="gradient-bg shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="text-2xl font-bold text-white">🌿 Green Haven Wellness</div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="nav-link text-white font-medium">Home</a>
+        <a href="#products" class="nav-link text-white font-medium">Products</a>
+        <a href="#about" class="nav-link text-white font-medium">About</a>
+        <a href="#testimonials" class="nav-link text-white font-medium">Testimonials</a>
+        <a href="#order" class="nav-link text-white font-medium">Order Now</a>
+        <a href="#contact" class="nav-link text-white font-medium">Contact</a>
+      </div>
+    </div>
   </div>
+</nav>
 
-  <!-- Featured Products -->
-  <section id="products">
-    <h2>Our Featured Herbal Products</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Herbal+Tea" alt="Herbal Tea">
-        <h3>Herbal Tea</h3>
-        <p>$300</p>
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-20 text-center">
+  <h1 class="text-5xl md:text-6xl font-bold mb-6">Natural Healing for Mind, Body & Soul</h1>
+  <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Premium herbal remedies crafted with ancient wisdom and modern science to support your wellness journey naturally.</p>
+  <a href="#products" class="btn-gold text-lg px-8 py-4">Explore Our Products 🌱</a>
+</section>
+
+<!-- Featured Products -->
+<section id="products" class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-center text-emerald-800 mb-12">Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Example Product Cards -->
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Organic Turmeric Capsules</h3>
+          <p class="text-gray-600 mb-4 text-sm">Supports joint health and immunity naturally.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$350</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Immune+Boost+Capsules" alt="Immune Boost Capsules">
-        <h3>Immune Boost Capsules</h3>
-        <p>$450</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Herbal Detox Tea</h3>
+          <p class="text-gray-600 mb-4 text-sm">Cleanses your body and improves digestion naturally.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$400</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Digestive+Aid+Powder" alt="Digestive Aid Powder">
-        <h3>Digestive Aid Powder</h3>
-        <p>$350</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Essential Herbal Oil</h3>
+          <p class="text-gray-600 mb-4 text-sm">Relieves stress and enhances relaxation.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$500</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Detox+Herbal+Syrup" alt="Detox Herbal Syrup">
-        <h3>Detox Herbal Syrup</h3>
-        <p>$500</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Immune Booster Capsules</h3>
+          <p class="text-gray-600 mb-4 text-sm">Strengthens immunity and overall health.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$550</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Joint+Relief+Oil" alt="Joint Relief Oil">
-        <h3>Joint Relief Oil</h3>
-        <p>$400</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Sleep Aid Herbal Tea</h3>
+          <p class="text-gray-600 mb-4 text-sm">Promotes restful sleep naturally.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$300</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Stress+Relief+Capsules" alt="Stress Relief Capsules">
-        <h3>Stress Relief Capsules</h3>
-        <p>$450</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Digestive Aid Capsules</h3>
+          <p class="text-gray-600 mb-4 text-sm">Supports healthy digestion and gut health.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$450</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Skin+Glow+Serum" alt="Skin Glow Serum">
-        <h3>Skin Glow Serum</h3>
-        <p>$600</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Joint Pain Relief Cream</h3>
+          <p class="text-gray-600 mb-4 text-sm">Relieves joint discomfort naturally.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$600</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/280x180?text=Energy+Boost+Powder" alt="Energy Boost Powder">
-        <h3>Energy Boost Powder</h3>
-        <p>$550</p>
+
+      <div class="product-card hover-lift">
+        <div class="h-48 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-4xl">🌿</div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">Liver Detox Capsules</h3>
+          <p class="text-gray-600 mb-4 text-sm">Cleanses the liver and improves energy levels.</p>
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold gold-accent">$1200</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800">In Stock</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="text-4xl font-bold text-emerald-800 mb-6">About Green Haven Wellness</h2>
+      <p class="text-lg text-gray-700 mb-6">We provide the highest quality herbal medicines and natural wellness products. Our mission is to bridge ancient herbal wisdom with modern scientific research, offering safe, effective, and natural solutions for optimal health.</p>
+      <div class="grid grid-cols-2 gap-6 mt-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold gold-accent">100+</div>
+          <div class="text-gray-600">Premium Products</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold gold-accent">5000+</div>
+          <div class="text-gray-600">Happy Customers</div>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="text-center">
+      <div class="bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full w-80 h-80 mx-auto flex items-center justify-center text-8xl">🌿</div>
+    </div>
+  </div>
+</section>
 
-  <!-- About Section -->
-  <section id="about">
-    <img src="https://images.unsplash.com/photo-1588776814546-41aa9d35d5c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=500&q=80" alt="Herbal medicine">
-    <p>
-      At Green Haven Wellness, we provide trusted herbal remedies for natural healing. 
-      Our products are carefully formulated to support wellness, detoxification, immune health, 
-      and specific treatments. With over a decade of experience in herbal medicine, we ensure 
-      every product meets the highest quality standards, so you can trust your journey to health.
-    </p>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonials">
-      <div class="testimonial">
-        <p>"Professional and effective herbal products. My health has improved significantly." – Jane D.</p>
+<!-- Testimonials -->
+<section id="testimonials" class="py-16 cream-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-center text-emerald-800 mb-12">What Our Customers Say</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="testimonial-card">
+        <div class="flex items-center mb-4"><div class="text-2xl mr-3">⭐⭐⭐⭐⭐</div></div>
+        <p class="text-gray-700 mb-4">"Amazing products that really work! I've been using their herbal supplements for months and feel more energetic and balanced than ever."</p>
+        <div class="font-semibold gold-accent">- Sarah M.</div>
       </div>
-      <div class="testimonial">
-        <p>"Reliable and trustworthy service. I highly recommend Green Haven Wellness." – Michael A.</p>
-      </div>
-      <div class="testimonial">
-        <p>"The products are natural, safe, and work as promised. Excellent service!" – Sarah K.</p>
-      </div>
-      <div class="testimonial">
-        <p>"High-quality herbal remedies. The team really knows what they are doing." – Daniel O.</p>
+      <div class="testimonial-card">
+        <div class="flex items-center mb-4"><div class="text-2xl mr-3">⭐⭐⭐⭐⭐</div></div>
+        <p class="text-gray-700 mb-4">"Excellent quality and fast shipping. The customer service is outstanding and the products are exactly as described. Highly recommend!"</p>
+        <div class="font-semibold gold-accent">- David L.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Custom Order Form -->
-  <section id="order">
-    <h2>Place Your Order</h2>
-    <form action="https://formspree.io/f/mayvlbrk" method="POST">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
-      <textarea name="order" rows="5" placeholder="Describe your order or treatment needed" required></textarea>
-      <select name="treatment" required>
-        <option value="">Select Treatment Type</option>
+<!-- Order Now Section -->
+<section id="order" class="py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-emerald-800 text-center mb-8">Place Your Order</h2>
+    <p class="text-center text-gray-700 mb-12">Tell us what you need, and we will prepare it just for you.</p>
+    <form action="https://formspree.io/f/mayvlbrk" method="POST" class="grid gap-6">
+      <input type="text" name="name" placeholder="Full Name" required class="form-input">
+      <input type="email" name="email" placeholder="Email Address" required class="form-input">
+      <input type="tel" name="phone" placeholder="Phone Number" required class="form-input">
+      <textarea name="order_details" rows="5" placeholder="Describe your order or treatment needed" required class="form-input"></textarea>
+      <button type="submit" class="btn-primary text-lg">Submit Order</button>
+    </form>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 gradient-bg text-white text-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
+    <p class="text-xl mb-8">Have questions about our products? We're here to help!</p>
+    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+      <div class="flex items-center"><span class="text-2xl mr-3">📧</span> greenhavenwellness1@gmail.com</div>
+      <div class="flex items-center"><span class="text-2xl mr-3">🌍</span> Worldwide Shipping Available</div>
+    </div>
+  </div>
+</section>
+
+</body>
+  </html>
