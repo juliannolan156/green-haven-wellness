@@ -5,78 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Green Haven Wellness Dashboard</title>
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:20px; background:#f5f5f0; }
-    h1 { text-align:center; color:#4caf50; }
-    table { width:100%; border-collapse: collapse; margin-top:20px; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#fcf9f3; margin:0; padding:20px; color:#333; }
+    h1 { text-align:center; color:#2e7d32; margin-bottom:20px; }
+    table { width:100%; border-collapse: collapse; margin-bottom:30px; }
     th, td { border:1px solid #ccc; padding:10px; text-align:center; }
-    th { background:#4caf50; color:white; }
-    input[type="text"], input[type="number"] { width: 90%; padding:5px; }
-    button { background:#4caf50; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin:2px; }
-    .add-product { margin-top:20px; }
+    th { background:#2e7d32; color:white; }
+    button { background:#2e7d32; color:white; padding:8px 12px; border:none; border-radius:5px; cursor:pointer; margin:2px; transition:0.3s; }
+    button:hover { background:#1b5e20; }
+    input, select { padding:8px; border-radius:5px; border:1px solid #ccc; margin:5px 0; width:100%; }
+    .form-container { max-width:600px; margin:auto; background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); }
+    .section-title { text-align:center; color:#2e7d32; margin-bottom:10px; }
   </style>
 </head>
 <body>
 
   <h1>Green Haven Wellness Dashboard</h1>
-  <p style="text-align:center;">Manage all 100 herbal products here. Changes will reflect on the homepage.</p>
 
   <!-- Products Table -->
-  <table id="products-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Product Name</th>
-        <th>Price (USD $)</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Example initial products -->
-      <tr>
-        <td>1</td>
-        <td>Herbal Tea</td>
-        <td>10</td>
-        <td>
-          <button onclick="editProduct(this)">Edit</button>
-          <button onclick="deleteProduct(this)">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Immune Boost Capsules</td>
-        <td>12</td>
-        <td>
-          <button onclick="editProduct(this)">Edit</button>
-          <button onclick="deleteProduct(this)">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Digestive Aid Powder</td>
-        <td>8</td>
-        <td>
-          <button onclick="editProduct(this)">Edit</button>
-          <button onclick="deleteProduct(this)">Delete</button>
-        </td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Detox Herbal Syrup</td>
-        <td>15</td>
-        <td>
-          <button onclick="editProduct(this)">Edit</button>
-          <button onclick="deleteProduct(this)">Delete</button>
-        </td>
-      </tr>
-      <!-- You can add more rows here up to 100 products -->
-    </tbody>
-  </table>
+  <div class="form-container">
+    <h2 class="section-title">Manage Products</h2>
+    <table id="products-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product Name</th>
+          <th>Price ($)</th>
+          <th>Image URL</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example initial products -->
+        <tr>
+          <td>1</td>
+          <td>Herbal Tea</td>
+          <td>300</td>
+          <td>https://via.placeholder.com/260x180?text=Herbal+Tea</td>
+          <td>
+            <button onclick="editProduct(this)">Edit</button>
+            <button onclick="deleteProduct(this)">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Immune Boost Capsules</td>
+          <td>450</td>
+          <td>https://via.placeholder.com/260x180?text=Immune+Boost+Capsules</td>
+          <td>
+            <button onclick="editProduct(this)">Edit</button>
+            <button onclick="deleteProduct(this)">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Digestive Aid Powder</td>
+          <td>350</td>
+          <td>https://via.placeholder.com/260x180?text=Digestive+Aid+Powder</td>
+          <td>
+            <button onclick="editProduct(this)">Edit</button>
+            <button onclick="deleteProduct(this)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <!-- Add New Product -->
-  <div class="add-product">
-    <h3>Add New Product</h3>
+    <!-- Add New Product -->
+    <h2 class="section-title">Add New Product</h2>
     <input type="text" id="new-name" placeholder="Product Name">
-    <input type="number" id="new-price" placeholder="Price in USD">
+    <input type="number" id="new-price" placeholder="Price ($)">
+    <input type="text" id="new-image" placeholder="Image URL">
     <button onclick="addProduct()">Add Product</button>
   </div>
 
@@ -84,43 +81,44 @@
     function addProduct() {
       let name = document.getElementById('new-name').value;
       let price = document.getElementById('new-price').value;
-      if(name === '' || price === '') {
-        alert('Please fill in both fields');
-        return;
-      }
+      let image = document.getElementById('new-image').value;
+      if(name === '' || price === '' || image === '') { alert('Please fill all fields'); return; }
       let table = document.getElementById('products-table').getElementsByTagName('tbody')[0];
       let newRow = table.insertRow();
       let idCell = newRow.insertCell(0);
       let nameCell = newRow.insertCell(1);
       let priceCell = newRow.insertCell(2);
-      let actionsCell = newRow.insertCell(3);
+      let imageCell = newRow.insertCell(3);
+      let actionsCell = newRow.insertCell(4);
       idCell.innerHTML = table.rows.length;
       nameCell.innerHTML = name;
       priceCell.innerHTML = price;
+      imageCell.innerHTML = image;
       actionsCell.innerHTML = '<button onclick="editProduct(this)">Edit</button> <button onclick="deleteProduct(this)">Delete</button>';
-      document.getElementById('new-name').value = '';
-      document.getElementById('new-price').value = '';
+      document.getElementById('new-name').value='';
+      document.getElementById('new-price').value='';
+      document.getElementById('new-image').value='';
     }
 
     function editProduct(btn) {
       let row = btn.parentNode.parentNode;
       let name = prompt("Edit product name:", row.cells[1].innerHTML);
-      let price = prompt("Edit product price (USD $):", row.cells[2].innerHTML);
-      if(name !== null && price !== null) {
+      let price = prompt("Edit product price ($):", row.cells[2].innerHTML);
+      let image = prompt("Edit image URL:", row.cells[3].innerHTML);
+      if(name !== null && price !== null && image !== null){
         row.cells[1].innerHTML = name;
         row.cells[2].innerHTML = price;
+        row.cells[3].innerHTML = image;
       }
     }
 
     function deleteProduct(btn) {
-      if(confirm("Are you sure you want to delete this product?")) {
+      if(confirm("Are you sure you want to delete this product?")){
         let row = btn.parentNode.parentNode;
         row.parentNode.removeChild(row);
         // Re-number IDs
         let table = document.getElementById('products-table').getElementsByTagName('tbody')[0];
-        for(let i=0; i<table.rows.length; i++){
-          table.rows[i].cells[0].innerHTML = i+1;
-        }
+        for(let i=0; i<table.rows.length; i++){ table.rows[i].cells[0].innerHTML = i+1; }
       }
     }
   </script>
