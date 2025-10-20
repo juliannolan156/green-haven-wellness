@@ -4,114 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Green Haven Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Lato&display=swap" rel="stylesheet">
   <style>
-    /* Reset and general styles */
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background:#fcf9f3; color:#333; }
-    a { text-decoration:none; color:inherit; }
-    
+    /* Fonts & colors */
+    body { font-family: 'Lato', sans-serif; background: #FCF9F3; color: #333; margin:0; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; color: #1B5E20; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor:pointer; transition:0.3s; }
+
     /* Header */
-    header { background: #2e7d32; color: white; padding: 30px 20px; text-align: center; }
-    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    header p { font-size: 1.1rem; }
+    header { display:flex; justify-content: space-between; align-items:center; padding:20px 40px; background:#2E7D32; color:white; }
+    header h1 { font-size:2rem; }
+    header a { color:white; font-size:0.95rem; }
 
     /* Navigation */
-    nav { background: #a5d6a7; display:flex; justify-content:center; padding:15px 0; flex-wrap:wrap; }
-    nav a { margin:5px 15px; font-weight:bold; color:#1b5e20; transition:0.3s; }
-    nav a:hover { color:#ffffff; }
+    nav { display:flex; justify-content:center; background:#A5D6A7; padding:12px 0; }
+    nav a { margin:0 20px; font-weight:bold; color:#1B5E20; }
+    nav a:hover { color:#2E7D32; }
 
     /* Hero Section */
-    .hero { background: url('https://images.unsplash.com/photo-1584270354949-5e53d2d03b7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGVyYmFsfGVufDB8fDB8fA%3D%3D&w=1080&q=80') center/cover no-repeat; height: 400px; display:flex; justify-content:center; align-items:center; color:white; text-shadow:2px 2px 5px rgba(0,0,0,0.7); }
-    .hero h2 { font-size:2rem; text-align:center; }
+    .hero { background: url('https://images.unsplash.com/photo-1584270354949-5e53d2d03b7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGVyYmFsfGVufDB8fDB8fA%3D%3D&w=1080&q=80') center/cover no-repeat; height:450px; display:flex; align-items:center; justify-content:center; color:white; text-align:center; text-shadow:2px 2px 6px rgba(0,0,0,0.6);}
+    .hero h2 { font-size:2.2rem; max-width:700px; line-height:1.3; }
 
     /* Sections */
-    section { padding:40px 20px; max-width:1200px; margin:auto; }
-    h2 { text-align:center; margin-bottom:30px; color:#2e7d32; }
+    section { max-width:1200px; margin:auto; padding:60px 20px; }
+    h2 { text-align:center; margin-bottom:40px; font-size:2rem; }
 
     /* Products */
-    .products { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-    .product { background:white; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); width:260px; padding:15px; transition:0.3s; }
-    .product:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.2); }
-    .product img { width:100%; height:180px; border-radius:10px; object-fit:cover; margin-bottom:10px; }
-    .product h3 { color:#2e7d32; margin-bottom:5px; }
-    .product p { font-weight:bold; font-size:1.1rem; }
+    .products { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:30px; justify-items:center; }
+    .product { background:white; border-radius:10px; box-shadow:0 3px 15px rgba(0,0,0,0.08); padding:15px; text-align:center; transition:0.3s; }
+    .product:hover { transform:translateY(-5px); box-shadow:0 5px 20px rgba(0,0,0,0.15); }
+    .product img { width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:12px; }
+    .product h3 { margin-bottom:5px; }
+    .product p { font-weight:bold; color:#2E7D32; font-size:1.1rem; }
 
     /* About */
-    #about p { max-width:700px; margin:auto; text-align:center; font-size:1.1rem; }
+    #about { display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
+    #about img { width:400px; border-radius:10px; object-fit:cover; }
+    #about p { flex:1; font-size:1.1rem; line-height:1.7; }
 
     /* Testimonials */
-    .testimonials { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-    .testimonial { background:#e8f5e9; border-left:5px solid #2e7d32; padding:15px; border-radius:5px; width:300px; }
+    .testimonials { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    .testimonial { background:#E8F5E9; border-left:5px solid #1B5E20; padding:20px; border-radius:8px; }
 
     /* Order Form */
-    form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:10px; }
-    input, textarea, select, button { padding:10px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
-    button { background:#2e7d32; color:white; border:none; cursor:pointer; transition:0.3s; }
-    button:hover { background:#1b5e20; }
+    form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:12px; }
+    input, textarea, select, button { padding:12px; border-radius:6px; border:1px solid #ccc; font-size:1rem; }
+    button { background:#1B5E20; color:white; border:none; font-weight:bold; }
+    button:hover { background:#145A32; }
 
     /* Footer */
-    footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; }
+    footer { background:#2E7D32; color:white; text-align:center; padding:25px 20px; }
+    footer p { margin-bottom:5px; }
+    footer a { color:white; margin:0 8px; font-size:0.9rem; }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Green Haven Wellness</h1>
-    <p>Email: <a href="mailto:greenhavenwellness1@gmail.com" style="color:white;">greenhavenwellness1@gmail.com</a></p>
+    <a href="mailto:greenhavenwellness1@gmail.com">greenhavenwellness1@gmail.com</a>
   </header>
 
   <nav>
-    <a href="#products">Featured Products</a>
+    <a href="#products">Products</a>
     <a href="#about">About</a>
     <a href="#testimonials">Testimonials</a>
-    <a href="#order">Place Order</a>
+    <a href="#order">Order</a>
   </nav>
 
+  <!-- Hero Section -->
   <div class="hero">
-    <h2>Natural Healing for a Healthier Life</h2>
+    <h2>Professional Herbal Medicine Solutions for Your Health and Wellness</h2>
   </div>
 
   <!-- Featured Products -->
   <section id="products">
-    <h2>Featured Herbal Products</h2>
+    <h2>Our Featured Herbal Products</h2>
     <div class="products">
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Herbal+Tea" alt="Herbal Tea">
+        <img src="https://via.placeholder.com/280x180?text=Herbal+Tea" alt="Herbal Tea">
         <h3>Herbal Tea</h3>
         <p>$300</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Immune+Boost+Capsules" alt="Immune Boost Capsules">
+        <img src="https://via.placeholder.com/280x180?text=Immune+Boost+Capsules" alt="Immune Boost Capsules">
         <h3>Immune Boost Capsules</h3>
         <p>$450</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Digestive+Aid+Powder" alt="Digestive Aid Powder">
+        <img src="https://via.placeholder.com/280x180?text=Digestive+Aid+Powder" alt="Digestive Aid Powder">
         <h3>Digestive Aid Powder</h3>
         <p>$350</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Detox+Herbal+Syrup" alt="Detox Herbal Syrup">
+        <img src="https://via.placeholder.com/280x180?text=Detox+Herbal+Syrup" alt="Detox Herbal Syrup">
         <h3>Detox Herbal Syrup</h3>
         <p>$500</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Joint+Relief+Oil" alt="Joint Relief Oil">
+        <img src="https://via.placeholder.com/280x180?text=Joint+Relief+Oil" alt="Joint Relief Oil">
         <h3>Joint Relief Oil</h3>
         <p>$400</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Stress+Relief+Capsules" alt="Stress Relief Capsules">
+        <img src="https://via.placeholder.com/280x180?text=Stress+Relief+Capsules" alt="Stress Relief Capsules">
         <h3>Stress Relief Capsules</h3>
         <p>$450</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Skin+Glow+Serum" alt="Skin Glow Serum">
+        <img src="https://via.placeholder.com/280x180?text=Skin+Glow+Serum" alt="Skin Glow Serum">
         <h3>Skin Glow Serum</h3>
         <p>$600</p>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/260x180?text=Energy+Boost+Powder" alt="Energy Boost Powder">
+        <img src="https://via.placeholder.com/280x180?text=Energy+Boost+Powder" alt="Energy Boost Powder">
         <h3>Energy Boost Powder</h3>
         <p>$550</p>
       </div>
@@ -120,12 +127,12 @@
 
   <!-- About Section -->
   <section id="about">
-    <h2>About Green Haven Wellness</h2>
+    <img src="https://images.unsplash.com/photo-1588776814546-41aa9d35d5c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=500&q=80" alt="Herbal medicine">
     <p>
-      Green Haven Wellness provides high-quality herbal remedies for natural healing. 
-      We specialize in treatments for various illnesses, carefully designed to support your 
-      body’s recovery and wellness. Each product is crafted with care to ensure effectiveness 
-      and safety. Trust us to bring nature’s power to your life.
+      At Green Haven Wellness, we provide trusted herbal remedies for natural healing. 
+      Our products are carefully formulated to support wellness, detoxification, immune health, 
+      and specific treatments. With over a decade of experience in herbal medicine, we ensure 
+      every product meets the highest quality standards, so you can trust your journey to health.
     </p>
   </section>
 
@@ -134,16 +141,16 @@
     <h2>What Our Clients Say</h2>
     <div class="testimonials">
       <div class="testimonial">
-        <p>"Amazing herbal products! I feel healthier and more energetic." – Jane D.</p>
+        <p>"Professional and effective herbal products. My health has improved significantly." – Jane D.</p>
       </div>
       <div class="testimonial">
-        <p>"Fast delivery and great quality. Highly recommend Green Haven Wellness!" – Michael A.</p>
+        <p>"Reliable and trustworthy service. I highly recommend Green Haven Wellness." – Michael A.</p>
       </div>
       <div class="testimonial">
-        <p>"Effective natural remedies! Truly professional service." – Sarah K.</p>
+        <p>"The products are natural, safe, and work as promised. Excellent service!" – Sarah K.</p>
       </div>
       <div class="testimonial">
-        <p>"Affordable and reliable herbal medicine. I will order again!" – Daniel O.</p>
+        <p>"High-quality herbal remedies. The team really knows what they are doing." – Daniel O.</p>
       </div>
     </div>
   </section>
@@ -152,25 +159,9 @@
   <section id="order">
     <h2>Place Your Order</h2>
     <form action="https://formspree.io/f/mayvlbrk" method="POST">
-      <input type="text" name="name" placeholder="Your Full Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Your Phone Number" required>
-      <textarea name="order" rows="5" placeholder="Describe your order / illness or treatment needed" required></textarea>
-      <select name="treatment">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="phone" placeholder="Phone Number" required>
+      <textarea name="order" rows="5" placeholder="Describe your order or treatment needed" required></textarea>
+      <select name="treatment" required>
         <option value="">Select Treatment Type</option>
-        <option value="General Wellness">General Wellness</option>
-        <option value="Detox">Detox</option>
-        <option value="Immune Boost">Immune Boost</option>
-        <option value="Stress Relief">Stress Relief</option>
-        <option value="Skin Care">Skin Care</option>
-      </select>
-      <button type="submit">Submit Order</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© 2025 Green Haven Wellness. All Rights Reserved.</p>
-  </footer>
-
-</body>
-  </html>
