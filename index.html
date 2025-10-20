@@ -1,37 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Green Haven Wellness — Natural Herbal Healing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Haven Wellness</title>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f5f5f0; margin: 0; }
-    header { background-color: #1b4d3e; color: white; padding: 20px; text-align: center; }
-    h1 { margin: 0; }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
-    .product { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    footer { background: #1b4d3e; color: white; text-align: center; padding: 10px; margin-top: 30px; }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background: #f5f5f0; color: #333; }
+    header { background: #4caf50; color: white; padding: 20px; text-align: center; }
+    nav { background: #e0e0d1; padding: 10px; text-align: center; }
+    nav a { margin: 0 15px; color: #333; text-decoration: none; font-weight: bold; }
+    section { padding: 20px; }
+    .products, .testimonials { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+    .product, .testimonial { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 250px; }
+    footer { background: #4caf50; color: white; text-align: center; padding: 15px; margin-top: 20px; }
+    form input, form textarea, form button { display: block; width: 100%; margin: 5px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    form button { background: #4caf50; color: white; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Green Haven Wellness</h1>
-    <p>Natural Herbal Healing • Premium Herbal Solutions</p>
+    <p>Contact: <a href="mailto:greenhavenwellness1@gmail.com" style="color:white;">greenhavenwellness1@gmail.com</a></p>
+    <p>Currency: USD ($)</p>
   </header>
-  <section class="products">
-    <div class="product">
-      <h3>Herbal Detox Tea</h3>
-      <p>Supports natural cleansing and boosts energy.</p>
-      <p><strong>$120</strong></p>
-    </div>
-    <div class="product">
-      <h3>Immune Boost Elixir</h3>
-      <p>Strengthens immune system naturally.</p>
-      <p><strong>$150</strong></p>
+
+  <nav>
+    <a href="#products">Featured Products</a>
+    <a href="#all-products">All Products</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Featured Products -->
+  <section id="products">
+    <h2 style="text-align:center;">8 Featured Products</h2>
+    <div class="products">
+      <div class="product"><h3>Herbal Tea</h3><p>$10</p></div>
+      <div class="product"><h3>Immune Boost Capsules</h3><p>$12</p></div>
+      <div class="product"><h3>Digestive Aid Powder</h3><p>$8</p></div>
+      <div class="product"><h3>Detox Herbal Syrup</h3><p>$15</p></div>
+      <div class="product"><h3>Joint Relief Oil</h3><p>$9</p></div>
+      <div class="product"><h3>Stress Relief Capsules</h3><p>$11</p></div>
+      <div class="product"><h3>Skin Glow Serum</h3><p>$14</p></div>
+      <div class="product"><h3>Energy Boost Powder</h3><p>$13</p></div>
     </div>
   </section>
+
+  <!-- All Products -->
+  <section id="all-products">
+    <h2 style="text-align:center;">All Products (100 Herbal Items)</h2>
+    <p style="text-align:center;">Manage these easily via <strong>dashboard.html</strong>.</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 style="text-align:center;">About Green Haven Wellness</h2>
+    <p style="max-width:700px; margin:0 auto; text-align:center;">
+      Welcome to Green Haven Wellness – your trusted source for natural herbal remedies. 
+      We provide high-quality herbal products that support healing, wellness, and overall health. 
+      Each product is carefully selected to ensure effectiveness and safety. Our mission is to bring 
+      nature’s healing power to your home, helping you live a healthier, happier life.
+    </p>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2 style="text-align:center;">Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Amazing herbal products! I feel healthier and more energetic." – Jane D.</p>
+      </div>
+      <div class="testimonial">
+        <p>"Fast delivery and great quality. Highly recommend Green Haven Wellness!" – Michael A.</p>
+      </div>
+      <div class="testimonial">
+        <p>"The best natural remedies I’ve ever used. Very satisfied!" – Sarah K.</p>
+      </div>
+      <div class="testimonial">
+        <p>"Affordable and effective herbal products. Will buy again!" – Daniel O.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Order Form -->
+  <section id="contact">
+    <h2 style="text-align:center;">Contact / Place Your Order</h2>
+    <form action="https://formspree.io/f/mayvlbrk" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message / Order Details" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
   <footer>
-    <p>Contact us: greenhavenwellness1@gmail.com</p>
+    <p>© 2025 Green Haven Wellness. All Rights Reserved.</p>
   </footer>
+
 </body>
-</html>
+                                                                                      </html>
